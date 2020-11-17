@@ -101,11 +101,7 @@
         src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script>
-
     $(document).ready(function () {
-
-        //-- Add New Row
-
         var t = $("#tbl").DataTable();
         num2 = 4
         $("#btn").click(function () {
@@ -117,24 +113,17 @@
             ]).draw(false);
             num2++;
         })
-
-
         $(document).on('click', '.ebtn', function () {
             var num = 4;
             $("#name").val($(".colname-" + num).html())
             $("#pst").val($(".colpost-" + num).html())
             $("#ofc").val($(".coloff-" + num).html())
-
-
         });
-
         $(document).on('click', '.nbtn', function () {
-
             t
                 .row($(this).parents('tr'))
                 .remove()
                 .draw();
-
         });
     });
 </script>
