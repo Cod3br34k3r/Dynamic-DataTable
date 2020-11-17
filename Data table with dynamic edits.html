@@ -20,7 +20,6 @@
                     <th>Position</th>
                     <th>Office</th>
                     <th>Action</th>
-
                 </tr>
                 </thead>
                 <tbody id="tblbody">
@@ -51,22 +50,7 @@
                         <button type="button" class="nbtn btn btn-danger btn-sm ">Del</button>
                         <button type="button" class="ebtn btn btn-info btn-sm">Edit</button>
                     </td>
-
                 </tr>
-                <!--                <tr>-->
-                <!--                    <td>Winter</td>-->
-                <!--                    <td>Senior Javascript Developer</td>-->
-                <!--                    <td>Edinburgh</td>-->
-                <!--                    <td><button type="button" class="nbtn btn btn-danger btn-sm ">Del</button></td>-->
-
-                <!--                </tr>-->
-                <!--                <tr>-->
-                <!--                    <td>Sato</td>-->
-                <!--                    <td>Accountant</td>-->
-                <!--                    <td>Tokyo</td>-->
-                <!--                    <td><button type="button" class="nbtn btn btn-danger btn-sm ">Del</button></td>-->
-
-                <!--                </tr>-->
                 </tbody>
                 <tfoot>
                 <tr>
@@ -144,23 +128,6 @@
 
         });
 
-        //-- Destroy and reinitialization
-
-        // $("#tbl").DataTable().destroy()
-        // $("#tblbody").append(`<tr>
-        //                             <td>${$("#name").val()}</td>
-        //                             <td>${$("#pst").val()}</td>
-        //                             <td>${$("#ofc").val()}</td>
-        //                             <td><button type="button" class="nbtn btn btn-danger btn-sm" >Del</button></td>
-        //                       </tr>
-        //                     `)
-        // $("#tbl").DataTable()
-
-
-        // })
-
-        //-- Remove rows Dynamically
-
         $(document).on('click', '.nbtn', function () {
 
             t
@@ -169,15 +136,6 @@
                 .draw();
 
         });
-
-        //-- Remove rows from parent or closest
-
-        // $(".nbtn").click(function () {
-        //     // $(this).parent().parent().remove();
-        //     $(this).closest("tr").remove();
-        // })
-
-
     });
 </script>
 </body>
