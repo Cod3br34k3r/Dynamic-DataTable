@@ -65,9 +65,9 @@
             x.forEach(myFunction);
             function myFunction(value, index, array) {
                 dt.row.add([
-                    `<td><span class="colname-${listnum}">${value.name}</span><input type="text" class="form-control d-none input-name${listnum}"></td>`,
-                    `<td><span class="colpost-${listnum}">${value.post}</span><input type="text" class="form-control d-none input-post${listnum}"></td>`,
-                    `<td><span class="colarea-${listnum}">${value.office}</span><input type="text" class="form-control d-none input-area${listnum}"></td>`,
+                    `<td><span class="colname-${listnum}">${value.name}</span><input type="text" class="form-control d-none input-name${listnum}" value="${value.name}"></td>`,
+                    `<td><span class="colpost-${listnum}">${value.post}</span><input type="text" class="form-control d-none input-post${listnum}" value="${value.post}"></td>`,
+                    `<td><span class="colarea-${listnum}">${value.office}</span><input type="text" class="form-control d-none input-area${listnum}" value="${value.office}"></td>`,
                     `<button data-number='${listnum}' class="btn-edit btn-edit${listnum} btn-info btn-sm">Edit</button><button data-number='${listnum}' class="btn-confirm btn-confirm${listnum} d-none btn-info btn-sm">Confirm</button>`
                 ]).draw()
                 listnum++;
@@ -76,9 +76,6 @@
             $(document).on("click", ".btn-edit", function () {
                 var pass = $(this).data("number")
                 $(`.input-name${pass} , .input-post${pass} , .input-area${pass}`).removeClass("d-none")
-                $(`.input-name${pass}`).val($(`.colname-${pass}`).html())
-                $(`.input-post${pass}`).val($(`.colpost-${pass}`).html())
-                $(`.input-area${pass}`).val($(`.colarea-${pass}`).html())
                 $(`.colname-${pass} , .colpost-${pass} , .colarea-${pass}`).addClass("d-none")
                 $(this).addClass("d-none")
                 $(".btn-confirm"+ pass).removeClass("d-none")
