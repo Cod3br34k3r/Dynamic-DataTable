@@ -65,9 +65,9 @@
             x.forEach(myFunction);
             function myFunction(value, index, array) {
                 dt.row.add([
-                    `<td><span class="colname-${listnum}">${x[listnum].name}</span><input type="text" class="form-control d-none input-name${listnum}"></td>`,
-                    `<td><span class="colpost-${listnum}">${x[listnum].post}</span><input type="text" class="form-control d-none input-post${listnum}"></td>`,
-                    `<td><span class="colarea-${listnum}">${x[listnum].office}</span><input type="text" class="form-control d-none input-area${listnum}"></td>`,
+                    `<td><span class="colname-${listnum}">${value.name}</span><input type="text" class="form-control d-none input-name${listnum}"></td>`,
+                    `<td><span class="colpost-${listnum}">${value.post}</span><input type="text" class="form-control d-none input-post${listnum}"></td>`,
+                    `<td><span class="colarea-${listnum}">${value.office}</span><input type="text" class="form-control d-none input-area${listnum}"></td>`,
                     `<button data-number='${listnum}' class="btn-edit btn-edit${listnum} btn-info btn-sm">Edit</button><button data-number='${listnum}' class="btn-confirm btn-confirm${listnum} d-none btn-info btn-sm">Confirm</button>`
                 ]).draw()
                 listnum++;
