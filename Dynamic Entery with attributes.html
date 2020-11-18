@@ -29,34 +29,6 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><span class="colname-1">Zain</span>
-                        <input type="text" class="form-control d-none input-name1"></td>
-                    <td><span class="colpost-1">CEO</span>
-                        <input type="text" class="form-control d-none input-post1"></td>
-                    <td><span class="colarea-1">Samnabad</span>
-                        <input type="text" class="form-control d-none input-area1"></td>
-
-
-                    <td>
-                        <button data-number="1" class="btn-edit btn-edit1 btn-info btn-sm">Edit</button>
-                        <button data-number="1" class="btn-confirm btn-confirm1 d-none btn-info btn-sm">Confirm</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td><span class="colname-2 ">Saad</span>
-                        <input type="text" class="form-control d-none input-name2"></td>
-                    <td><span class="colpost-2 ">Manager</span>
-                        <input type="text" class="form-control d-none input-post2"></td>
-                    <td><span class="colarea-2 ">Iqbal Town</span>
-                        <input type="text" class="form-control d-none input-area2"></td>
-
-
-                    <td>
-                        <button data-number="2" class="btn-edit btn-edit2 btn-info btn-sm">Edit</button>
-                        <button data-number="2" class="btn-confirm btn-confirm2 d-none btn-info btn-sm">Confirm</button>
-                    </td>
-                </tr>
                 </tbody>
             </table>
         </div>
@@ -69,24 +41,59 @@
 
     <script>
         $(document).ready(function () {
-            $("#myTable").DataTable();
+            var dt = $("#myTable").DataTable();
+            var listnum = 0;
+            var x = [
+                {
+                    "name": "Ash",
+                    "post": "System Architect",
+                    "office": "Edinburgh"
+                }
+                ,
+                {
+                    "name": "Kelly",
+                    "post": "Accountant",
+                    "office": "Tokoyo"
+                }
+                ,
+                {
+                    "name": "Nixon",
+                    "post": "Junior Technical Author",
+                    "office": "San Francisco"
+                }
+            ]
+            x.forEach(myFunction);
+            function myFunction(value, index, array) {
+                dt.row.add([
+                    `<td><span class="colname-${listnum}">${x[listnum].name}</span><input type="text" class="form-control d-none input-name${listnum}"></td>`,
+                    `<td><span class="colpost-${listnum}">${x[listnum].post}</span><input type="text" class="form-control d-none input-post${listnum}"></td>`,
+                    `<td><span class="colarea-${listnum}">${x[listnum].office}</span><input type="text" class="form-control d-none input-area${listnum}"></td>`,
+                    `<button data-number='${listnum}' class="btn-edit btn-edit${listnum} btn-info btn-sm">Edit</button><button data-number='${listnum}' class="btn-confirm btn-confirm${listnum} d-none btn-info btn-sm">Confirm</button>`
+                ]).draw()
+                listnum++;
+            }
+
             $(document).on("click", ".btn-edit", function () {
                 var pass = $(this).data("number")
                 $(`.input-name${pass} , .input-post${pass} , .input-area${pass}`).removeClass("d-none")
+                $(`.input-name${pass}`).val($(`.colname-${pass}`).html())
+                $(`.input-post${pass}`).val($(`.colpost-${pass}`).html())
+                $(`.input-area${pass}`).val($(`.colarea-${pass}`).html())
                 $(`.colname-${pass} , .colpost-${pass} , .colarea-${pass}`).addClass("d-none")
                 $(this).addClass("d-none")
-                $(".btn-confirm" + pass).removeClass("d-none")
+                $(".btn-confirm"+ pass).removeClass("d-none")
 
             })
+
             $(document).on("click", ".btn-confirm", function () {
-                var pass = $(this).data("number")
+                var pass =$(this).data("number")
                 $(`.input-name${pass} , .input-post${pass} , .input-area${pass}`).addClass("d-none")
-                $(".colname-" + pass).html($(".input-name" + pass).val())
-                $(".colpost-" + pass).html($(".input-post" + pass).val())
-                $(".colarea-" + pass).html($(".input-area" + pass).val())
+                $(".colname-" + pass).html($(".input-name"+ pass).val())
+                $(".colpost-" + pass).html($(".input-post"+ pass).val())
+                $(".colarea-" + pass).html($(".input-area"+ pass).val())
                 $(`.colname-${pass} , .colpost-${pass} , .colarea-${pass}`).removeClass("d-none")
                 $(this).addClass("d-none")
-                $(".btn-edit" + pass).removeClass("d-none")
+                $(".btn-edit"+ pass).removeClass("d-none")
 
             })
         })
